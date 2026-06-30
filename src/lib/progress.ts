@@ -84,14 +84,8 @@ export function useSubmission(id: string) {
   }, [id]);
   function save(next: Partial<SubmissionRecord>) {
     const all = readSubs();
-    const merged: SubmissionRecord = {
-      code: "",
-      language: "javascript",
-      ts: Date.now(),
-      ...(all[id] ?? {}),
-      ...next,
-      ts: Date.now(),
-    };
+    const prev = all[id] ?? { code: "", language: "javascript", ts: 0 };
+    const merged: SubmissionRecord = { ...prev, ...next, ts: Date.now() };
     all[id] = merged;
     window.localStorage.setItem(SUB_KEY, JSON.stringify(all));
     setRec(merged);

@@ -150,5 +150,30 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Mermaid: let it size; we wrap in dark surface */
+  .mermaid svg { max-width: 100%; height: auto; }
+
+  /* Markdown prose tweaks */
+  .prose-dsa { color: var(--color-foreground); font-size: 14.5px; line-height: 1.65; }
+  .prose-dsa h1, .prose-dsa h2, .prose-dsa h3 { color: var(--color-foreground); font-weight: 650; margin: 1.2em 0 0.5em; letter-spacing: -0.01em; }
+  .prose-dsa h1 { font-size: 1.4em; }
+  .prose-dsa h2 { font-size: 1.15em; }
+  .prose-dsa h3 { font-size: 1em; }
+  .prose-dsa p { margin: 0.6em 0; }
+  .prose-dsa ul, .prose-dsa ol { padding-left: 1.4em; margin: 0.6em 0; }
+  .prose-dsa li { margin: 0.2em 0; }
+  .prose-dsa code { background: var(--color-secondary); padding: 1px 6px; border-radius: 4px; font-size: 0.88em; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .prose-dsa pre { background: oklch(0.14 0.02 265); border: 1px solid var(--color-border); border-radius: 8px; padding: 14px 16px; overflow-x: auto; font-size: 12.5px; line-height: 1.55; margin: 0.8em 0; }
+  .prose-dsa pre code { background: transparent; padding: 0; font-size: inherit; }
+  .prose-dsa table { width: 100%; border-collapse: collapse; margin: 0.8em 0; font-size: 13px; }
+  .prose-dsa th, .prose-dsa td { border: 1px solid var(--color-border); padding: 6px 10px; text-align: left; }
+  .prose-dsa th { background: var(--color-secondary); font-weight: 600; }
+  .prose-dsa blockquote { border-left: 3px solid var(--color-primary); padding-left: 12px; color: var(--color-muted-foreground); margin: 0.8em 0; }
+  .prose-dsa a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+  .prose-dsa hr { border: none; border-top: 1px solid var(--color-border); margin: 1.2em 0; }
   }
 }

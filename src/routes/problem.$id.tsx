@@ -34,6 +34,7 @@ type Section = {
 function ProblemPage() {
   const { id } = useParams({ from: "/problem/$id" });
   const p = getProblem(id);
+  if (!p) return <div className="p-8 text-center text-muted-foreground">Problem not found.</div>;
   const { isDone, toggle } = useProgress();
   const { rec, save } = useSubmission(id);
   const [code, setCode] = useState("");
@@ -53,8 +54,6 @@ function ProblemPage() {
     if (rec?.code) setSubmitted(true);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rec?.code]);
-
-  if (!p) return null;
 
   async function runStream(mode: Mode, userMessage?: string) {
     if (busy) return;

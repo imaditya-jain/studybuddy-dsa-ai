@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProblemIdRouteImport } from './routes/problem.$id'
 import { Route as ApiGenerateImageRouteImport } from './routes/api/generate-image'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProblemIdRoute = ProblemIdRouteImport.update({
+  id: '/problem/$id',
+  path: '/problem/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiGenerateImageRoute = ApiGenerateImageRouteImport.update({
@@ -33,30 +39,34 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api/chat': typeof ApiChatRoute
   '/api/generate-image': typeof ApiGenerateImageRoute
+  '/problem/$id': typeof ProblemIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/chat': typeof ApiChatRoute
   '/api/generate-image': typeof ApiGenerateImageRoute
+  '/problem/$id': typeof ProblemIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/api/chat': typeof ApiChatRoute
   '/api/generate-image': typeof ApiGenerateImageRoute
+  '/problem/$id': typeof ProblemIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/chat' | '/api/generate-image'
+  fullPaths: '/' | '/api/chat' | '/api/generate-image' | '/problem/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/chat' | '/api/generate-image'
-  id: '__root__' | '/' | '/api/chat' | '/api/generate-image'
+  to: '/' | '/api/chat' | '/api/generate-image' | '/problem/$id'
+  id: '__root__' | '/' | '/api/chat' | '/api/generate-image' | '/problem/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiGenerateImageRoute: typeof ApiGenerateImageRoute
+  ProblemIdRoute: typeof ProblemIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/problem/$id': {
+      id: '/problem/$id'
+      path: '/problem/$id'
+      fullPath: '/problem/$id'
+      preLoaderRoute: typeof ProblemIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/generate-image': {
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiChatRoute: ApiChatRoute,
   ApiGenerateImageRoute: ApiGenerateImageRoute,
+  ProblemIdRoute: ProblemIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

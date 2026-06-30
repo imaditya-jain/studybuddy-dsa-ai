@@ -80,9 +80,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "14-Day DSA Practice Dashboard" },
       { name: "description", content: "92 problems across two-pointers, trees, DP and more. AI tutor with hints, code review, optimal solutions and visual diagrams." },
       { property: "og:title", content: "14-Day DSA Practice Dashboard" },
-      { property: "og:description", content: "Learn data structures & algorithms with an AI tutor — hints, code review, and visual explanations." },
+      { property: "og:description", content: "92 problems across two-pointers, trees, DP and more. AI tutor with hints, code review, optimal solutions and visual diagrams." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "14-Day DSA Practice Dashboard" },
+      { name: "twitter:description", content: "92 problems across two-pointers, trees, DP and more. AI tutor with hints, code review, optimal solutions and visual diagrams." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/90d72d9f-98ce-4c35-9c5b-861f03bc4614/id-preview-d44ed72e--bbe13df5-615e-4d6c-bbfe-8b132e3d2739.lovable.app-1782813980879.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/90d72d9f-98ce-4c35-9c5b-861f03bc4614/id-preview-d44ed72e--bbe13df5-615e-4d6c-bbfe-8b132e3d2739.lovable.app-1782813980879.png" },
     ],
     links: [
       {

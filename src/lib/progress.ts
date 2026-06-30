@@ -5,6 +5,8 @@ const SUB_KEY = "dsa14:submissions:v1";
 
 type ProgressMap = Record<string, { done: boolean; ts: number }>;
 
+const EMPTY_PROGRESS: ProgressMap = {};
+
 function read(): ProgressMap {
   if (typeof window === "undefined") return {};
   try {
@@ -30,7 +32,7 @@ function subscribe(cb: () => void) {
 }
 
 export function useProgress() {
-  const progress = useSyncExternalStore(subscribe, read, () => ({}) as ProgressMap);
+  const progress = useSyncExternalStore(subscribe, read, () => EMPTY_PROGRESS);
 
   function toggle(id: string) {
     const p = read();

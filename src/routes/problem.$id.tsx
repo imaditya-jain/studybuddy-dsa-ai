@@ -33,8 +33,9 @@ type Section = {
 
 function ProblemPage() {
   const { id } = useParams({ from: "/problem/$id" });
-  const p = getProblem(id);
-  if (!p) return <div className="p-8 text-center text-muted-foreground">Problem not found.</div>;
+  const pMaybe = getProblem(id);
+  if (!pMaybe) return <div className="p-8 text-center text-muted-foreground">Problem not found.</div>;
+  const p: Problem = pMaybe;
   const { isDone, toggle } = useProgress();
   const { rec, save } = useSubmission(id);
   const [code, setCode] = useState("");
